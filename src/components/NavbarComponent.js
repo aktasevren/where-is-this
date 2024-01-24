@@ -1,16 +1,12 @@
 import React from 'react'
 import { Navbar, Container } from "react-bootstrap"
-import siteLogo from "../assets/film.png"
 
 export default function NavbarComponent() {
   return (
-    <Navbar className="">
+    <Navbar>
       <Container className='justify-content-center'>
-        <Navbar.Brand href="/" className=''>
-          <div className='d-flex justify-content-center align-items-center '>
-            <img alt="siteLogo" src={siteLogo} width="100" height="100" className="d-inline-block align-top" />
-            <span className='align-items-center row ms-2' style={{fontWeight:'bolder',fontSize:'48px',color:'#DBC8AC'}}>filming  location  finder</span>
-          </div>
+        <Navbar.Brand href="/">
+          <h1 className='nb-header' >filming  location  finder</h1>
         </Navbar.Brand>
       </Container>
     </Navbar>

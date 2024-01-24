@@ -2,7 +2,7 @@
 
 :root {
   /* Colors */
-  --brand-color: hsl(46, 100%, 50%) !important;
+  --brand-color: red !important;
   --black: hsl(0, 0%, 0%) !important;
   --white: hsl(0, 0%, 100%) !important;
   /* Fonts */
@@ -21,7 +21,7 @@
 
 
 h2 {
-  font-size: 2.25rem !important;
+  font-size: 5.25rem !important;
   font-family: var(--font-title) !important;
   color: var(--white) !important;
   line-height: 1.1 !important;
@@ -34,7 +34,7 @@ p {
   color: var(--white) !important;
 }
 
-.flow > * + * {
+.flow>*+* {
   margin-top: var(--flow-space, 1em) !important;
 }
 
@@ -51,9 +51,9 @@ p {
   margin-bottom: 24px !important;
 }
 
-.card > * {
-  grid-column: 1 / 2 !important;
-  grid-row: 1 / 2 !important;
+.card>* {
+  grid-column: 1 / 4 !important;
+  grid-row: 1 / 4 !important;
 }
 
 .card__background {
@@ -69,12 +69,10 @@ p {
   align-self: flex-end !important;
   height: 55% !important;
   padding: 12% 1.25rem 1.875rem !important;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 0%, 0) 0%,
-    hsla(0, 0%, 0%, 0.3) 10%,
-    hsl(0, 0%, 0%) 100%
-  ) !important;
+  background: linear-gradient(180deg,
+      hsla(0, 0%, 0%, 0) 0%,
+      hsla(0, 0%, 0%, 0.3) 10%,
+      hsl(0, 0%, 0%) 100%) !important;
 }
 
 .card__content--container {
@@ -84,8 +82,9 @@ p {
 .card__title {
   position: relative !important;
   width: fit-content !important;
-  width: -moz-fit-content !important; /* Prefijo necesario para Firefox  */
-  font-size: 28px !important;
+  width: -moz-fit-content !important;
+  /* Prefijo necesario para Firefox  */
+  font-size: 32px !important;
 }
 
 .card__title::after {
@@ -101,7 +100,8 @@ p {
 .card__button {
   padding: 0.75em 1.6em !important;
   width: fit-content !important;
-  width: -moz-fit-content !important; /* Prefijo necesario para Firefox  */
+  width: -moz-fit-content !important;
+  /* Prefijo necesario para Firefox  */
   font-variant: small-caps !important;
   font-weight: bold !important;
   border-radius: 0.45em !important;
@@ -136,7 +136,7 @@ p {
     transition: transform 500ms ease-in !important;
   }
 
-  .card__content--container > :not(.card__title),
+  .card__content--container> :not(.card__title),
   .card__button {
     opacity: 0 !important;
     transition: transform 500ms ease-out, opacity 500ms ease-out !important;
@@ -163,9 +163,9 @@ p {
     transform: scale(1.3) !important;
   }
 
-  .card:hover .card__content--container > :not(.card__title),
+  .card:hover .card__content--container> :not(.card__title),
   .card:hover .card__button,
-  .card:focus-within .card__content--container > :not(.card__title),
+  .card:focus-within .card__content--container> :not(.card__title),
   .card:focus-within .card__button {
     opacity: 1 !important;
     transition: opacity 500ms ease-in !important;
@@ -181,4 +181,3 @@ p {
     transition-delay: 500ms !important;
   }
 }
-
