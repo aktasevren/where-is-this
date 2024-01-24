@@ -1,14 +1,20 @@
 import React from 'react'
+import searchbar from "./searchbar.css"
+import { Container } from "react-bootstrap"
+
 
 
 export default function Searchbar() {
     return (
-        <form action="" class="search-bar">
-            <input type="search" name="search" pattern=".*\S.*" required />
-                <button class="search-btn" type="submit">
-                    <span>Search</span>
-                </button>
-        </form>
+
+        <Container className='searchbar'>
+            <form onsubmit="event.preventDefault();" role="search">
+                <label for="search">Search for stuff</label>
+                <input id="search" type="search" placeholder="zombieland..." autofocus required />
+                <button type="submit">GO</button>
+            </form>
+        </Container>
+
 
 
     )

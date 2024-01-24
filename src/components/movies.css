@@ -44,8 +44,6 @@ p {
   margin-top: 32px;
   display: grid !important;
   place-items: center !important;
-  width: auto !important;
-  max-width: 21.875rem !important;
   height: 36.125rem !important;
   overflow: hidden !important;
   border-radius: 0.625rem !important;

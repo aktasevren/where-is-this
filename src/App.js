@@ -29,7 +29,6 @@ useEffect(() => {
   return (
     <div className="App">
       <NavbarComponent />
-      <MovieTypes />
       <BrowserRouter>
       <Searchbar />
         <Routes>
