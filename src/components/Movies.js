@@ -14,18 +14,18 @@ export default function Movies() {
     const popularMovies = useSelector((state) => state.MovieReducer.popularMovies);
 
     useEffect(() => {
-        console.log(popularMovies)
     }, [popularMovies])
 
     return (
         <Container>
             <Row>
                 {
-                    popularMovies.map((movie) => (
-                        <Col xl={4} lg={6} sm={12}>
-                            <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
+                    popularMovies.map((movie, index) => (
+                        <Col key={index} xl={4} lg={6} sm={12}>
+                            <Link key={index} to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
                                 <article className="card movie-card" onClick={() => (dispatch(getLocations((movie.id))), dispatch(getPoster((movie.poster_path))))}>
                                     <img
+
                                         className="card__background"
                                         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                                         alt={movie.overview.slice(0, 144) + "..."}

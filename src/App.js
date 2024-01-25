@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux"; import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 import Home from "./components/Home.js"
@@ -14,12 +14,12 @@ function App() {
   const dispatch = useDispatch();
 
 
-const version = useSelector((state) => state.MovieReducer.version);
+  const version = useSelector((state) => state.MovieReducer.version);
 
-useEffect(() => {
-  console.log("App Version : " + version)
-  dispatch(getPopularMovies())
-})
+  useEffect(() => {
+    console.log("App Version : " + version)
+    dispatch(getPopularMovies())
+  })
 
 
 
@@ -27,11 +27,11 @@ useEffect(() => {
     <div className="App">
       <NavbarComponent />
       <BrowserRouter>
-      <Searchbar />
+        <Searchbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie/:imdbid" element={<SelectedMovie />} />
-          <Route path="/search" element={<SearchedMovies />} />
+          <Route path="/search/:text" element={<SearchedMovies />} />
         </Routes>
       </BrowserRouter>
     </div>

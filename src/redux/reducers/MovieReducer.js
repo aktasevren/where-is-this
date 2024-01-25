@@ -2,7 +2,8 @@
 import {
   GET_LOCATIONS,
   GET_POPULAR_MOVIES,
-  GET_POSTER
+  GET_POSTER,
+  FETCH_MOVIES
 } from "../actions/ActionTypes";
 
 const initialState = {
@@ -10,7 +11,8 @@ const initialState = {
   selectedMovieID: "",
   popularMovies: [],
   movieInfos: [],
-  poster: ""
+  poster: "",
+  fMovies: []
 };
 
 
@@ -31,6 +33,11 @@ const MovieReducer = (state = initialState, action) => {
       return {
         ...state,
         poster: action.payload,
+      };
+    case FETCH_MOVIES:
+      return {
+        ...state,
+        fMovies: action.payload,
       };
     default:
       return state;
