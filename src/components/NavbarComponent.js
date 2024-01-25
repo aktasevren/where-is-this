@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Container } from "react-bootstrap"
-import githubLogo from "../assets/github.png";
+import githubLogo from "../assets/githubwhite.png";
 import tmdbLogo from "../assets/tmdb.svg";
 
 export default function NavbarComponent() {

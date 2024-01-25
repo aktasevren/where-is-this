@@ -1,7 +1,17 @@
-import React from 'react'
+import { Container, Row, Col } from "react-bootstrap"
+
 
 export default function Footer() {
   return (
-    <div>Footer</div>
+    <div>
+      <hr className='hr-line'></hr>
+      <Container>
+        <div className="text-center" style={{ color: '#9fd3c7' }}>© Copyright 2024 -  All Rights Reserved</div>
+        <div className="text-center designedby" style={{ color: '#9fd3c7' , margin:'24px' }}>
+          Designed by evrenaktas
+        </div>
+      </Container>
+    </div>
+
   )
 }

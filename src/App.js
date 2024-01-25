@@ -9,6 +9,7 @@ import SearchedMovies from "./components/SearchedMovies.js"
 import NavbarComponent from "./components/NavbarComponent.js"
 import Searchbar from "./components/Searchbar.js"
 import { getPopularMovies } from "./redux/actions/MovieActions.js";
+import Footer from "./components/Footer.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/search/:text" element={<SearchedMovies />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
