@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'alertifyjs/build/css/alertify.css';
 
 
 import configureStore from './redux/store';

@@ -7,7 +7,7 @@ import {
 } from "../actions/ActionTypes";
 
 const initialState = {
-  version: "v1.0",
+  version: "v2.0",
   selectedMovieID: "",
   popularMovies: [],
   movieInfos: [],

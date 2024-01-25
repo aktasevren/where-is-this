@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchMovies } from "../redux/actions/MovieActions";
 import { Row, Col, Button, Form, InputGroup } from "react-bootstrap";
+import alertify from "alertifyjs";
 
 export default function Searchbar() {
     const navigate = useNavigate();
@@ -16,11 +17,18 @@ export default function Searchbar() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(fetchMovies(inputText));
-        navigate(`/search/${inputText}`);
+        if (inputText === "" || inputText === null || inputText === undefined) {
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.error('Please type something.');
+        } else {
+            dispatch(fetchMovies(inputText));
+            navigate(`/search/${inputText}`);
+        }
+
     };
 
     return (
+
 
         <Row className="d-flex justify-content-center search-area">
             <Col lg={4}>
