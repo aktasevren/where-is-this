@@ -34,7 +34,7 @@ export default function Searchbar() {
             <Col lg={4}>
                 <InputGroup className="my-3" onChange={onChange}>
                     <Form.Control placeholder="Type a movie name ..." style={{ backgroundColor: '#DCDCDC', fontWeight: 'bold' }} />
-                    <Button style={{ width: '120px' }} className="bg-warning" onClick={onSubmit}>
+                    <Button style={{ width: '120px', backgroundColor: '#9fd3c7' }} onClick={onSubmit}>
                         <b style={{ color: "black", fontSize: '24px' }}>Search</b>
                     </Button>
                 </InputGroup>

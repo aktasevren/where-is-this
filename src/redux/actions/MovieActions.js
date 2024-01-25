@@ -1,5 +1,6 @@
 import { GET_POPULAR_MOVIES, GET_LOCATIONS, GET_POSTER, FETCH_MOVIES } from "./ActionTypes"
 import axios from "axios"
+import alertify from "alertifyjs";
 
 
 
@@ -27,7 +28,6 @@ export const getPopularMovies = () => (dispatch) => {
 
 };
 
-
 export const getPoster = (poster_path) => (dispatch) => {
   dispatch({
     type: GET_POSTER,
@@ -36,6 +36,7 @@ export const getPoster = (poster_path) => (dispatch) => {
 }
 
 export const getLocations = (id) => async (dispatch) => {
+
   const movieID = []
   const movieInfo = []
   await axios
@@ -52,16 +53,13 @@ export const getLocations = (id) => async (dispatch) => {
     .then((response) => {
 
       if (response.data.locations.length === 0) {
-        console.log("no location information")
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.error('No location found for this movie.');
       } else {
-
         response.data.locations.map((res) => {
           movieInfo.push({ place: res.node.location, desc: res.node?.displayableProperty?.qualifiersInMarkdownList?.[0]?.markdown })
         })
-        
         movieInfo.map(async (movie, index) => {
-
-
           await axios.get(`https://api.geoapify.com/v1/geocode/search?text=${movie.place}&apiKey=a97d941d259f4b42912a28ac3d623d46`)
             .then((response) => {
               try {
@@ -71,16 +69,18 @@ export const getLocations = (id) => async (dispatch) => {
               } catch (error) {
                 console.log(error)
               }
-
             })
+        }
+        )
+
+        dispatch({
+          type: GET_LOCATIONS,
+          payload: movieInfo
         })
       }
     })
 
-  await dispatch({
-    type: GET_LOCATIONS,
-    payload: movieInfo
-  })
+
 }
 
 export const fetchMovies = (movieValue) => async (dispatch) => {

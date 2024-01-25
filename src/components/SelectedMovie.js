@@ -22,19 +22,21 @@ export function SelectedMovie() {
     async function makeRequest() {
       await delay(2000);
       setCoordinates(movieInfos)
+      console.log(coordinates)
+
     }
     makeRequest()
   }, [movieInfos, coordinates]);
 
   return (
-    <MapContainer center={[55, 60]} zoom={2} minZoom={0} maxZoom={12} scrollWheelZoom={true} >
+    <MapContainer center={[55, 60]} zoom={3} minZoom={0} maxZoom={12} scrollWheelZoom={true} >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
       />
       {
         coordinates.map((elem, index) => (
-          elem.Ycoor == undefined || elem.Xcoor == undefined ?
+          elem.Ycoor === undefined || elem.Xcoor === undefined ?
             <div>
             </div> :
             <Marker

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap"
-import movies from "./movies.css"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocations, getPoster } from "../redux/actions/MovieActions";

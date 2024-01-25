@@ -1,6 +1,7 @@
 body {
-	background: rgb(23, 24, 51) !important;
-	background: linear-gradient(90deg, rgba(23, 24, 51, 1) 0%, rgba(8, 5, 60, 1) 51%) !important;
+
+	background: linear-gradient(181deg, rgb(2, 0, 97) 15%, rgb(97, 149, 219) 158.5%);
+
 	font-family: "Lato", sans-serif !important;
 	font-weight: 600 !important;
 	font-style: normal !important;
@@ -9,7 +10,7 @@ body {
 
 /* Navbar  */
 .nb-header {
-	color: antiquewhite !important;
+	color: #9fd3c7 !important;
 	letter-spacing: 18px;
 	margin-top: 12px;
 	align-items: center;
@@ -19,7 +20,7 @@ body {
 
 .hr-line {
 	width: 100%;
-	color: white;
+	color: #9fd3c7;
 	border-width: 5px;
 }
 
@@ -29,93 +30,14 @@ body {
 	margin-right: 30px;
 }
 
-/* Searchbar  */
-:root {
-	--rad: 0.7rem;
-	--dur: 0.3s;
-	--color-dark: #2f2f2f;
-	--color-light: #fff;
-	--color-brand: antiquewhite;
-	--font-fam: 'Lato', sans-serif;
-	--height: 4rem;
-	--btn-width: 6rem;
-	--bez: cubic-bezier(0, 0, 0.43, 1.49);
-}
-
-.searchbar {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 48px;
-	margin-bottom: 24px;
-	opacity: 75%;
-}
-
-form {
-	position: relative;
-	width: 50rem;
-	background: var(--color-brand);
-	border-radius: var(--rad);
-}
-
-input,
-button {
-	height: var(--height);
-	font-family: var(--font-fam);
-	border: 0;
-	color: var(--color-dark);
-	font-size: 24px !important;
-}
-
-input[type="search"] {
-	outline: 0;
-	width: 100%;
-	background: var(--color-light);
-	padding: 0 1.6rem;
-	border-radius: var(--rad);
-	appearance: none;
-	transition: all var(--dur) var(--bez);
-	transition-property: width, border-radius;
-	z-index: 1;
-	position: relative;
-}
-
-button {
-	display: none;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: var(--btn-width);
-	font-weight: bold;
-	background: var(--color-brand);
-	border-radius: 0 var(--rad) var(--rad) 0;
-}
-
-input:not(:placeholder-shown) {
-	border-radius: var(--rad) 0 0 var(--rad);
-	width: calc(100% - var(--btn-width));
-}
-
-input:not(:placeholder-shown)+button {
-	display: block;
-}
-
-label {
-	position: absolute;
-	clip: rect(1px, 1px, 1px, 1px);
-	padding: 0;
-	border: 0;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-}
 
 /* Movie Card  */
 
 
 /* Map  */
 .leaflet-container {
-	width: 100%;
-	height: 600px;
-	margin-top: 48px !important;
+	width: 95%;
+	height: 700px;
+	margin-top: 24px !important;
+	margin: auto;
 }
