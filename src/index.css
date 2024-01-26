@@ -53,6 +53,14 @@ body {
 	margin-right: 30px;
 }
 
+@media only screen and (max-width: 992px) {
+	.logo {
+		width: 12x;
+		height: 12px;
+		margin-right: 12px;
+	}
+}
+
 
 /* Searchbar  */
 .searchbar {
