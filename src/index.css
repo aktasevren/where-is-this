@@ -16,10 +16,35 @@ body {
 	margin-left: 24px;
 }
 
+@media only screen and (max-width: 992px) {
+	.nb-header {
+		justify-content: center;
+		color: #9fd3c7 !important;
+		letter-spacing: 18px;
+		margin-top: 12px;
+		align-items: center;
+		font-size: 24px;
+		margin-left: 24px;
+	}
+}
+
 .hr-line {
 	width: 100%;
 	color: #9fd3c7;
 	border-width: 5px;
+}
+
+.logos-col {
+	display: flex;
+	justify-content: end;
+}
+
+@media only screen and (max-width: 992px) {
+	.logos-col {
+		display: flex;
+		justify-content: center;
+		margin-top: 24px !important;
+	}
 }
 
 .logo {
@@ -29,7 +54,20 @@ body {
 }
 
 
-/* Movie Card  */
+/* Searchbar  */
+.searchbar {
+	display: flex;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 992px) {
+	.searchbar {
+		display: flex;
+		justify-content: center;
+		margin: auto !important;
+		width: 50%;
+	}
+}
 
 
 /* Map  */

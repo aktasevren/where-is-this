@@ -30,12 +30,12 @@ export default function Searchbar() {
     return (
 
 
-        <Row className="d-flex justify-content-center search-area">
+        <Row className="searchbar">
             <Col lg={4}>
                 <InputGroup className="my-3" onChange={onChange}>
-                    <Form.Control placeholder="Type a movie name ..." style={{ backgroundColor: '#DCDCDC', fontWeight: 'bold' }} />
-                    <Button style={{ width: '120px', backgroundColor: '#9fd3c7' }} onClick={onSubmit}>
-                        <b style={{ color: "black", fontSize: '24px' }}>Search</b>
+                    <Form.Control placeholder="Type a movie name ..." />
+                    <Button onClick={onSubmit}>
+                        <b>Search</b>
                     </Button>
                 </InputGroup>
             </Col>
