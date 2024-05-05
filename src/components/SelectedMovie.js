@@ -32,7 +32,7 @@ export function SelectedMovie() {
     <MapContainer center={[55, 60]} zoom={3} minZoom={0} maxZoom={12} scrollWheelZoom={true} >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+        url="https://tile.openstreetmap.de/{z}/{x}/{y}.png"
       />
       {
         coordinates.map((elem, index) => (
