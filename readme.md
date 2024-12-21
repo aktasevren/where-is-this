@@ -22,6 +22,6 @@ npm install
 npm start
 ```
 
-![Alt text](image.png)
+![Alt text](assets/image.png)
 
-![Alt text](image-1.png)
+![Alt text](assets/image-1.png)
