@@ -18,7 +18,6 @@ function App() {
   const version = useSelector((state) => state.MovieReducer.version);
 
   useEffect(() => {
-    console.log("App Version : " + version)
     dispatch(getPopularMovies())
   })
 

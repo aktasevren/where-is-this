@@ -77,13 +77,15 @@ body {
 		width: 75%;
 	}
 }
-
-
-/* Map  */
+/* Map */
 .leaflet-container {
-	width: 95%;
-	height: 700px;
+	width: 80%; /* Haritayı daha küçük yapmak için genişliği %80'e düşürdük */
+	height: 60vh; /* Yüksekliği %60 yapmak, daha küçük bir görünüm sağlar */
 	margin-top: 24px !important;
 	margin: auto;
-	border: 5px solid #9fd3c7;
+	border: 5px solid #9fd3c7; /* Başlangıçta mevcut olan sınır */
+	border-radius: 20px; /* Yuvarlak köşeler için biraz daha az yuvarlaklık */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+	position: relative;
 }
+
