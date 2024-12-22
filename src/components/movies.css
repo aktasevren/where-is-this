@@ -58,7 +58,22 @@ p {
 .card__background {
   max-width: 100% !important;
   height: 100% !important;
+  object-fit: cover !important; /* Oranı koruyarak kutuyu dolduracak şekilde resim yerleştirildi */
+
 }
+
+
+
+@media (max-width: 767px) {
+  .card__background {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+}
+
+
+
 
 .card__content {
   --flow-space: 0.9375rem !important;

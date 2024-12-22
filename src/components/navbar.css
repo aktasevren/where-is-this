@@ -1,0 +1,32 @@
+/* navbar.css */
+.sticky-navbar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1020; /* İçeriklerin navbar'ın altından geçmemesi için yeterince yüksek bir z-index değeri */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* İsteğe bağlı: küçük bir gölge efekti */
+  backdrop-filter: blur(10px); /* Arka planı bulanıklaştırmak için */
+}
+
+.nb-header {
+  font-size: 2rem; /* Başlık boyutunu ayarlayın */
+}
+
+.logos-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logo {
+  height: 40px; /* Logo boyutunu ayarlayın */
+  margin-left: 15px; /* Logolar arasındaki boşluk */
+}
+
+.hr-line {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #dee2e6;
+}

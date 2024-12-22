@@ -21,9 +21,9 @@ export default function Movies() {
             <Row>
                 {
                     popularMovies.map((movie, index) => (
-                        <Col key={index} xl={4} lg={6} sm={12}>
+                        <Col key={index} xl={3} lg={6} sm={12}>
                             <Link key={index} to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
-                                <article className="card movie-card" onClick={() => (dispatch(getLocations((movie.id))), dispatch(getPoster((movie.poster_path))))}>
+                                <article className="card" onClick={() => (dispatch(getLocations((movie.id))), dispatch(getPoster((movie.poster_path))))}>
                                     <img
 
                                         className="card__background"
