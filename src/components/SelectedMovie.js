@@ -19,6 +19,7 @@ export function SelectedMovie() {
     async function makeRequest() {
       await delay(2000);
       setCoordinates(movieInfos);
+      console.log(coordinates);
     }
     makeRequest();
 
@@ -57,7 +58,7 @@ export function SelectedMovie() {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+        url="https://tile.openstreetmap.de/{z}/{x}/{y}.png"
       />
       {coordinates.map((elem, index) =>
         elem.Ycoor === undefined || elem.Xcoor === undefined ? null : (
