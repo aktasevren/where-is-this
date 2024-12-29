@@ -12,7 +12,8 @@ const initialState = {
   popularMovies: [],
   movieInfos: [],
   poster: "",
-  fMovies: []
+  fMovies: [],
+  noMovie: false,
 };
 
 
@@ -27,7 +28,9 @@ const MovieReducer = (state = initialState, action) => {
     case GET_LOCATIONS:
       return {
         ...state,
-        movieInfos: action.payload,
+        movieInfos: action.payload.movieInfo,
+        noMovie: action.payload.noMovie
+
       };
     case GET_POSTER:
       return {

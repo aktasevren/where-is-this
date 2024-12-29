@@ -15,7 +15,7 @@ export default function NavbarComponent() {
             </Navbar.Brand>
           </Col>
           <Col xl={6} md={12} className="logos-col">
-            <div>
+            <div className="logos-wrapper">
               <a href="https://github.com/aktasevren/where-is-this" target="_blank" rel="noopener noreferrer">
                 <img src={githubLogo} alt="GitHub Logo" className="logo" />
               </a>
@@ -24,6 +24,7 @@ export default function NavbarComponent() {
               </a>
             </div>
           </Col>
+
         </Row>
         <hr className='hr-line'></hr>
       </Container>

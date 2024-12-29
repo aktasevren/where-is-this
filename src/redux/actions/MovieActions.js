@@ -39,6 +39,7 @@ export const getLocations = (id) => async (dispatch) => {
 
   const movieID = []
   const movieInfo = []
+  const noMovie = false
   await axios
     .get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
@@ -53,9 +54,21 @@ export const getLocations = (id) => async (dispatch) => {
     .then((response) => {
 
       if (response.data.locations.length === 0) {
+        console.log("No location found for this movie.");
         alertify.set('notifier', 'position', 'top-right');
         alertify.error('No location found for this movie.');
-      } else {
+        const noMovie = true
+        const movieInfo = []
+      } 
+      else if (response.data.locations == "location not found") {
+        console.log("No location found for this movie.");
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.error('No location found for this movie.');
+        const noMovie = true
+        const movieInfo = []
+      }
+      else {
+        const noMovie = false
         response.data.locations.map((res) => {
           movieInfo.push({ place: res.node.location, desc: res.node?.displayableProperty?.qualifiersInMarkdownList?.[0]?.markdown })
         })
@@ -77,12 +90,12 @@ export const getLocations = (id) => async (dispatch) => {
 
         dispatch({
           type: GET_LOCATIONS,
-          payload: movieInfo
+          payload: {
+            movieInfo,noMovie
+          }
         })
       }
     })
-
-
 }
 
 export const fetchMovies = (movieValue) => async (dispatch) => {

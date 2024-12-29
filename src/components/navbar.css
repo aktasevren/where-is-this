@@ -30,3 +30,25 @@
   border: 0;
   border-top: 1px solid #dee2e6;
 }
+
+
+
+
+.logos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Logoların ortalanmasını sağlar */
+  gap: 1rem; /* Logolar arasına boşluk ekler */
+}
+
+.logo {
+  max-width: 36px; /* Logoların maksimum boyutunu belirler */
+  width: 100%; /* Logoların alanı doldurmasını sağlar */
+  height: auto; /* Oranların korunmasını sağlar */
+}
+
+@media (max-width: 768px) {
+  .logos-wrapper {
+    align-items: center; /* Alt alta gelen logoların ortalanmasını sağlar */
+  }
+}
