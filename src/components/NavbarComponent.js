@@ -22,6 +22,9 @@ export default function NavbarComponent() {
               <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
                 <img src={tmdbLogo} alt="TMDb Logo" className="logo" />
               </a>
+              <a href="https://www.buymeacoffee.com/aktasevren">
+                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160" alt="buymeacoffee" />
+              </a>
             </div>
           </Col>
 
