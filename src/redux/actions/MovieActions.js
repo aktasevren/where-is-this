@@ -30,7 +30,7 @@ import alertify from "alertifyjs";
 
 export const getPopularMovies = () => (dispatch) => {
   axios
-    .get("http://localhost:3001/api/popular-movies") // Backend'e istek gönder
+    .get("https://filming-locations-api-w-express-js.vercel.app/api/popular-movies") // Backend'e istek gönder
     .then((response) => {
       dispatch({
         type: GET_POPULAR_MOVIES,
