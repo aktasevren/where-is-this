@@ -4,29 +4,42 @@ import alertify from "alertifyjs";
 
 
 
+// export const getPopularMovies = () => (dispatch) => {
+//   const popularMovies = []
+//   axios
+//     .get(
+//       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+//     )
+//     .then((response) => {
+//       response.data.results.map((res) => {
+//         if (res.genre_ids.includes(16)) {
+//         }
+//         else {
+//           popularMovies.push(res)
+//         }
+//       })
+//       dispatch({
+//         type: GET_POPULAR_MOVIES,
+//         payload: popularMovies,
+//       })
+//     }
+//     )
+//     .catch((err) => console.log(err));
+
+// };
+
 export const getPopularMovies = () => (dispatch) => {
-  const popularMovies = []
   axios
-    .get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
-    )
+    .get("http://localhost:3001/api/popular-movies") // Backend'e istek gönder
     .then((response) => {
-      response.data.results.map((res) => {
-        if (res.genre_ids.includes(16)) {
-        }
-        else {
-          popularMovies.push(res)
-        }
-      })
       dispatch({
         type: GET_POPULAR_MOVIES,
-        payload: popularMovies,
-      })
-    }
-    )
-    .catch((err) => console.log(err));
-
+        payload: response.data, // Backend'den gelen filtrelenmiş filmleri al
+      });
+    })
+    .catch((err) => console.log("Error fetching popular movies:", err));
 };
+
 
 export const getPoster = (poster_path) => (dispatch) => {
   dispatch({
