@@ -3,31 +3,6 @@ import axios from "axios"
 import alertify from "alertifyjs";
 
 
-
-// export const getPopularMovies = () => (dispatch) => {
-//   const popularMovies = []
-//   axios
-//     .get(
-//       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
-//     )
-//     .then((response) => {
-//       response.data.results.map((res) => {
-//         if (res.genre_ids.includes(16)) {
-//         }
-//         else {
-//           popularMovies.push(res)
-//         }
-//       })
-//       dispatch({
-//         type: GET_POPULAR_MOVIES,
-//         payload: popularMovies,
-//       })
-//     }
-//     )
-//     .catch((err) => console.log(err));
-
-// };
-
 export const getPopularMovies = () => (dispatch) => {
   axios
     .get("https://filming-locations-api-w-express-js.vercel.app/api/popular-movies") // Backend'e istek gönder
@@ -48,87 +23,94 @@ export const getPoster = (poster_path) => (dispatch) => {
   })
 }
 
+
 export const getLocations = (id) => async (dispatch) => {
+  const movieID = [];
+  const movieInfo = [];
+  let noMovie = false;
 
-  const movieID = []
-  const movieInfo = []
-  const noMovie = false
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
-    )
-    .then((response) => {
-      const imdbid = { imdbid: response.data.imdb_id }
-      movieID.push(imdbid)
+  try {
+    // ✅ 1. Backend API'ye istek atarak TMDb'den IMDB ID alıyoruz
+    const movieResponse = await axios.get(
+      `https://filming-locations-api-w-express-js.vercel.app/api/movie/${id}`
+    );
+
+    if (!movieResponse.data.imdb_id) {
+      alertify.error("Movie ID not found.");
+      return;
     }
-    )
-  await axios
-    .get(`https://filming-locations-api-w-express-js.vercel.app/imdbid/${movieID[0].imdbid}`)
-    .then((response) => {
 
-      if (response.data.locations.length === 0) {
-        console.log("No location found for this movie.");
-        alertify.set('notifier', 'position', 'top-right');
-        alertify.error('No location found for this movie.');
-        const noMovie = true
-        const movieInfo = []
-      } 
-      else if (response.data.locations == "location not found") {
-        console.log("No location found for this movie.");
-        alertify.set('notifier', 'position', 'top-right');
-        alertify.error('No location found for this movie.');
-        const noMovie = true
-        const movieInfo = []
-      }
-      else {
-        const noMovie = false
-        response.data.locations.map((res) => {
-          movieInfo.push({ place: res.node.location, desc: res.node?.displayableProperty?.qualifiersInMarkdownList?.[0]?.markdown })
-        })
+    const imdbid = { imdbid: movieResponse.data.imdb_id };
+    movieID.push(imdbid);
+
+    // ✅ 2. Backend API'ye istek atarak IMDB ID'ye göre filming locations alıyoruz
+    const locationsResponse = await axios.get(
+      `https://filming-locations-api-w-express-js.vercel.app/imdbid/${movieID[0].imdbid}`
+    );
+
+    if (
+      !locationsResponse.data.locations ||
+      locationsResponse.data.locations.length === 0 ||
+      locationsResponse.data.locations === "location not found"
+    ) {
+      alertify.set("notifier", "position", "top-right");
+      alertify.error("No location found for this movie.");
+      noMovie = true;
+    } else {
+      locationsResponse.data.locations.map((res) => {
+        movieInfo.push({
+          place: res.node.location,
+          desc:
+            res.node?.displayableProperty?.qualifiersInMarkdownList?.[0]
+              ?.markdown || "No description available",
+        });
+      });
+
+      // ✅ 3. Geolocation API ile koordinatları alıyoruz
+      await Promise.all(
         movieInfo.map(async (movie, index) => {
           const encodedPlace = encodeURIComponent(movie.place);
+          try {
+            const geoResponse = await axios.get(
+              `https://api.geoapify.com/v1/geocode/search?text=${encodedPlace}&apiKey=a97d941d259f4b42912a28ac3d623d46`
+            );
 
-          await axios.get(`https://api.geoapify.com/v1/geocode/search?text=${encodedPlace}&apiKey=a97d941d259f4b42912a28ac3d623d46`)
-            .then((response) => {
-              try {
-                movie.Xcoor = response?.data?.features?.[0]?.geometry?.coordinates?.[0]
-                movie.Ycoor = response?.data?.features?.[0]?.geometry?.coordinates?.[1]
-                movie.index = index
-              } catch (error) {
-                console.log(error)
-              }
-            })
-        }
-        )
-
-        dispatch({
-          type: GET_LOCATIONS,
-          payload: {
-            movieInfo,noMovie
+            movie.Xcoor = geoResponse?.data?.features?.[0]?.geometry?.coordinates?.[0];
+            movie.Ycoor = geoResponse?.data?.features?.[0]?.geometry?.coordinates?.[1];
+            movie.index = index;
+          } catch (error) {
+            console.log("Error fetching geolocation:", error);
           }
         })
-      }
-    })
-}
+      );
+    }
+
+    // ✅ 4. Redux'a veriyi dispatch et
+    dispatch({
+      type: GET_LOCATIONS,
+      payload: {
+        movieInfo,
+        noMovie,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+  }
+};
 
 export const fetchMovies = (movieValue) => async (dispatch) => {
-  const fMovies = []
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${movieValue}&page=1&include_adult=false`
-    )
-    .then((response) => {
-      response.data.results.map((res) => {
-        if (res.genre_ids.includes(16)) {
-        } else {
-          fMovies.push(res)
-        }
-      })
-      dispatch({
-        type: FETCH_MOVIES,
-        payload: fMovies,
-      })
-    }
-    )
+  try {
+    // ✅ Backend API'ye istek atarak filmleri çekiyoruz
+    const response = await axios.get(
+      `https://filming-locations-api-w-express-js.vercel.app/api/search-movie?query=${movieValue}`
+    );
 
+    // ✅ Backend zaten animasyon filmlerini filtrelediği için direkt Redux'a aktarıyoruz
+    dispatch({
+      type: FETCH_MOVIES,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+  }
 };
