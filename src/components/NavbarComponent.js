@@ -16,9 +16,9 @@ export default function NavbarComponent() {
           </Col>
           <Col xl={6} md={12} className="logos-col">
             <div className="logos-wrapper">
-              <a href="https://github.com/aktasevren/where-is-this" target="_blank" rel="noopener noreferrer">
+{/*               <a href="https://github.com/aktasevren/where-is-this" target="_blank" rel="noopener noreferrer">
                 <img src={githubLogo} alt="GitHub Logo" className="logo" />
-              </a>
+              </a> */}
               <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
                 <img src={tmdbLogo} alt="TMDb Logo" className="logo" />
               </a>
