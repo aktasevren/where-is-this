@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import filmIcon from "../assets/film.png";
 
 export function SelectedMovie() {
   const delay = (ms) =>
@@ -67,8 +68,8 @@ export function SelectedMovie() {
             position={[elem.Ycoor, elem.Xcoor]}
             icon={
               new Icon({
-                iconUrl: `https://image.tmdb.org/t/p/original/${poster}`,
-                iconSize: [37.5, 61.5],
+                iconUrl: filmIcon,
+                iconSize: [37.5, 37.5],
                 iconAnchor: [12, 41],
               })
             }
